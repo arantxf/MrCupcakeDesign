@@ -1,0 +1,327 @@
+.page {
+  --gray-rgb: 0, 0, 0;
+  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+  
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  min-height: 100svh;
+  padding: 80px;
+  gap: 64px;
+  font-family: var(--font-questrial-sans);
+  background-color: #FFFFFF;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --gray-rgb: 255, 255, 255;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+  }
+}
+
+.body {
+  color: #000000;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  grid-row-start: 2;
+  align-items: center;
+  width: 100%;
+}
+
+/*HEADER*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  background-color: #FCF6DB;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;           
+  padding: 0 20px;
+  z-index: 100;
+}
+
+.logoHeader {
+  margin: 0 auto;
+  display: block;
+  max-width: 252px; /* Evita que el logo crezca más de lo necesario */
+  height: auto;
+}
+
+.iconosLaterales {
+  display: flex;
+  gap: 24px; /* Espacio entre los íconos */
+}
+
+.iconosLaterales button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0; /* Remueve el padding interno */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/*Barra lateral*/
+.sidebar {
+  font-size: 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 450px;
+  height: 100%;
+  background-color: #7E3D00;
+  color: white;
+  transition: transform 0.3s ease-in-out; 
+  padding: 50px;
+  transform: translateX(-100%); /* Sidebar oculto */
+  z-index: 999; 
+}
+
+.sidebarMini {
+  font-size: 0.875rem;
+  margin-top: 15cm;
+}
+
+.sidebarOpen {
+  transform: translateX(0);
+}
+
+.sidebar h2 {
+  color: white;
+  margin-bottom: 40px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 21px 0;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  text-decoration: underline;
+}
+
+.sidebarToggle img {
+  transition: transform 0.3s ease;
+}
+
+.sidebarToggle {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 35px;
+  left: 30px;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.sidebarToggleDisabled {
+  opacity: 0.5; 
+  pointer-events: none;
+}
+
+.sidebarArrowOpen {
+  left: calc(100% + 10px); 
+}
+
+.sidebarArrow {
+  position: absolute;
+  top: 20px;
+  left: calc(100% - 50px); /* Aparece fuera del sidebar */
+  transition: left 0.3s ease-in-out;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1001; /* Mayor que el botón del menú */
+}
+
+
+/*CAROUSEL*/
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  /*background-color: #b6b6b6;*/
+  background-image: url("../../public/fondo-alternativo.png");
+  background-image: url("../../public/fondo-final.png");
+  background-size: cover;
+  background-repeat: repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.carouselImageWrapper {
+  position: relative;
+  width: 80%; /* Ensuring the image wrapper doesn't overflow */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carouselImageWrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.carouselText {
+  position: absolute;
+  bottom: 20px;
+  right: -190px;
+  /*transform: translateX(50%);*/
+  color: #7E3D00;
+  font-size: 1.1rem;
+  /*background: rgba(0, 0, 0, 0.5); */
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/*Barra de búsqueda*/
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  position: relative; /* Esto permite que la barra se posicione de forma absoluta dentro de este contenedor */
+}
+
+/* Estilos iniciales de la barra de búsqueda */
+.searchBar {
+  width: 0; /* Empieza oculta */
+  height: 30px;
+  padding: 4px 0; /* Sin padding al inicio */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 50px;
+  background-color: #ffffff;
+  border-color: #7E3D00;
+  position: absolute;
+  right: 32px;
+  color: #000000;
+  opacity: 0; /* Inicialmente oculta */
+  transition: width 0.4s ease-in-out, opacity 0.3s ease; /* Transición suave */
+}
+
+/* Cuando la barra de búsqueda está visible */
+.searchBarOpen {
+  width: 200px;
+  padding: 4px 8px;
+  opacity: 1;
+}
+
+/* Animación personalizada */
+@keyframes slidein {
+  from {
+    width: 0; /* Empieza oculta */
+  }
+  to {
+    width: 200px; /* Ancho máximo al desplegarse */
+  }
+}
+
+/*FOOTER*/
+.footer {
+  color: #000000;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  height: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FCF6DB;
+  padding: 20px;
+}
+
+.footerLogo {
+  margin: 4px;
+  margin-left: 60px; 
+}
+
+.footerCenter {
+  text-align: center;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.footerRight {
+  text-align: left;
+  padding-bottom: 10px;
+  margin: 200px;
+}
+
+.footerRight h3,
+.footerCenter h3 {
+  margin-bottom: 10px;
+}
+
+.footerRight p {
+  max-width: 400px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 32px;
+    padding-bottom: 80px;
+  }
+
+  .main {
+    align-items: center;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.no-select {
+  -webkit-user-select: none; /* Safari, Chrome */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;   
+}
