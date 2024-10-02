@@ -7,13 +7,13 @@ import styles from "./page.module.css";
 export default function Home() {
   {/* Array of image sources */}
   const images = [
-    "/echaelfreno.png",
-    "/imhornyWhite.png",
-    "/imhornyBlack.png",
+    { src: "/echaelfreno.png", id: 1 },
+    { src: "/imhornyWhite.png", id: 2 },
+    { src: "/imhornyBlack.png", id: 3 },
   ];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const handleImageClick = () => {
-    window.location.href = '/another-page'; // Cambia la URL según sea necesario
+  const handleImageClick = (id: number) => {
+    window.location.href = '/articulos/${id}`';
   };
 
 
@@ -160,9 +160,9 @@ export default function Home() {
         <div className={styles.carousel} onClick={handleSideClick}>
           <div className={styles.carouselImageWrapper}>
             <Image
-              src={images[currentImageIndex]}
+              src={images[currentImageIndex].src}
               alt="Camisetas"
-              //--onClick={() => handleImageClick('/another-page')} // Cambia la URL según sea necesario
+              //--onClick={() =>  handleImageClick(images[currentImageIndex].id)} // Cambia la URL según sea necesario
               fill
               style={{
                 objectFit: "contain",

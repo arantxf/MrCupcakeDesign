@@ -209,6 +209,7 @@
   padding: 10px 20px;
   border-radius: 10px;
   text-align: center;
+  user-select: none;
 }
 
 /*Barra de búsqueda*/
@@ -255,6 +256,7 @@
 
 /*FOOTER*/
 .footer {
+  user-select: none;
   color: #000000;
   position: fixed;
   bottom: 0px;
@@ -317,11 +319,4 @@
     align-items: center;
     justify-content: center;
   }
-}
-
-.no-select {
-  -webkit-user-select: none; /* Safari, Chrome */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* Internet Explorer/Edge */
-  user-select: none;   
 }
